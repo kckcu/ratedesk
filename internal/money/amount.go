@@ -72,6 +72,9 @@ func ParseAmount(input string) (Amount, error) {
 	if strings.Contains(c[1], "+") || strings.Contains(c[0], "+") {
 		return Amount{}, ErrInvalidAmount
 	}
+	if strings.Contains(c[1], "-") || strings.Contains(c[0], "-") {
+		return Amount{}, ErrInvalidAmount
+	}
 
 	firstZero := c[1][0] == '0'
 	whole, err := strconv.ParseInt(c[0], 10, 64)

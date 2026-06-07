@@ -43,6 +43,7 @@ func TestInvalidAmountSpec(t *testing.T) {
 		{name: "no currency", raw: "125.00"},
 		{name: "too many dots", raw: ".12."},
 		{name: "no currency code", raw: "12."},
+		{name: "no currency code", raw: "-0.01 USD"},
 	}
 
 	for _, tt := range tests {
