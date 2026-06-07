@@ -1,0 +1,20 @@
+stages:
+  - check
+
+fmt:
+  stage: check
+  image: golang:1.22
+  script:
+    - test -z "$(gofmt -l ./cmd ./internal)"
+
+test:
+  stage: check
+  image: golang:1.22
+  script:
+    - go test ./...
+
+vet:
+  stage: check
+  image: golang:1.22
+  script:
+    - go vet ./...
