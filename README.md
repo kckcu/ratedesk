@@ -1,47 +1,38 @@
-# ratedesk
+# RateDesk RD-02 Starter
 
-CLI tool that parses and normalises monetary amounts.
+This repository is the starter template for RD-02: Functions and Errors.
 
-## Requirements
+It starts from the completed RD-01 money model and adds package skeletons for rates, conversion, and CSV import.
 
-Go 1.22 or later.
+## Target CLI
 
-## Build
+After the module is complete:
 
 ```bash
-go build ./...
+go run ./cmd/ratedesk convert -rates testdata/rates.csv -amount "10.00 USD" -to EUR
 ```
 
-## Run
+## CSV Contract
 
-```bash
-go run ./cmd/ratedesk/ "125.00 USD"
+CSV files use this header:
+
+```text
+from,to,rate
+USD,EUR,0.92
 ```
 
-After building:
+## Commands
 
 ```bash
-./ratedesk "125.00 USD"
-# 125.00 USD
-```
-
-Invalid input prints to stderr and exits with a non-zero code:
-
-```bash
-./ratedesk "abc USD"
-# error: invalid amount
-```
-
-## Test
-
-```bash
-go test ./...
-```
-
-## Check
-
-Runs fmt, test, and vet:
-
-```bash
+make fmt
+make test
+make vet
 make check
 ```
+
+## Out of Scope
+
+- goroutines and worker pools;
+- HTTP, DB, Redis, Kafka, cache;
+- broad provider interfaces;
+- retry frameworks.

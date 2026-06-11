@@ -1,10 +1,11 @@
-# RD-01 Testing Strategy
+# RD-02 Testing Strategy
 
-Write table tests around externally observable behavior:
+Cover success and failure paths:
 
-- valid money inputs normalize to the expected string;
-- invalid inputs return errors instead of panics;
-- constructors protect invariants;
-- CLI glue stays thin and delegates parsing to `internal/money`.
+- rate validation and duplicate insertion;
+- missing rate behavior with `errors.Is(err, rates.ErrRateNotFound)`;
+- converter rounding policy;
+- CSV malformed rows, invalid currencies, invalid rates, and file open failures;
+- CLI smoke command with `testdata/rates.csv`.
 
-Do not test private parsing steps directly. Prefer examples that match README commands and MR acceptance criteria.
+Assertions should check sentinel errors through `errors.Is` and structured row context through `errors.As`, not fragile full message strings.

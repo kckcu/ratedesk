@@ -2,7 +2,7 @@
 
 ## Issue
 
-Closes RD-01-
+Closes RD-02-
 
 ## What Changed
 
@@ -15,8 +15,11 @@ Closes RD-01-
 - [ ] `make vet`
 - [ ] `make check`
 
-## Review Notes
+## Failure Cases
 
-- What invariant did you protect?
-- Which invalid input did you test?
-- What is intentionally out of scope?
+- Which invalid input did this MR cover?
+- Which sentinel errors should work with `errors.Is`?
+
+## Out of Scope
+
+- No goroutines, HTTP, DB, Redis, Kafka, or cache.
