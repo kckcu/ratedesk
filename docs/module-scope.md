@@ -1,17 +1,17 @@
-# RD-01 Module Scope
+# RD-02 Module Scope
 
-RD-01 is intentionally small. The only production boundary is between the CLI and the money package.
+RD-02 adds function boundaries and error handling around currency conversion.
 
 ## Build
 
-- `cmd/ratedesk` parses CLI arguments and prints the normalized result.
-- `internal/money` owns validation, parsing, formatting, and invariants.
+- `internal/rates` owns pairs, rates, lookup, and duplicate policy.
+- `internal/converter` converts an amount using an existing rate table.
+- `internal/importer` reads CSV input and returns a table.
+- `cmd/ratedesk` wires flags to the use case.
 
 ## Do Not Build
 
-- rate lookup
-- CSV files
-- conversion math
-- concurrency
-- service packages
-- infrastructure code
+- goroutines or worker pools;
+- provider frameworks;
+- HTTP, DB, Redis, Kafka, cache;
+- broad architecture layers.

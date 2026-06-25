@@ -1,0 +1,3 @@
+from,to,rate
+USD,EUR,not-a-rate
+USD,US,1.20
